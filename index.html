@@ -59,6 +59,16 @@
           "Camera Error: " + error.name + " - " + error.message;
       }
     }
+    
+function checkFaceDetection() {
+  const video = document.getElementById("webcam");
+
+  if (video && video.readyState >= 2) {
+    document.getElementById("status").textContent =
+      "Camera Ready - Face Detection Setup Pending";
+  }
+}
+
   </script>
 </body>
 </html>

@@ -190,22 +190,44 @@ function speakMessage(englishText, hindiText) {
   window.speechSynthesis.speak(englishVoice);
 }
 
+
 function testAttendance(type) {
   if (!singleFaceReady) {
     alert("Please show exactly one face to the camera.");
+    speakMessage(
+      "Please show your face to the camera.",
+      "कृपया कैमरे के सामने अपना चेहरा दिखाएँ।"
+    );
     return;
   }
 
   if (type === lastAttendanceType) {
-    alert("Invalid Sequence! Please select " +
-      (lastAttendanceType === "IN" ? "OUT" : "IN"));
+    const nextType = lastAttendanceType === "IN" ? "OUT" : "IN";
+
+    alert("Invalid Sequence! Please select " + nextType);
+
+    speakMessage(
+      "Invalid attendance. Please select " + nextType,
+      "गलत अटेंडेंस। कृपया " +
+      (nextType === "OUT" ? "आउट" : "इन") + " बटन दबाएँ।"
+    );
     return;
   }
 
   lastAttendanceType = type;
 
   alert(type + " Attendance Test Successful");
+
+  speakMessage(
+    type === "OUT"
+      ? "Out attendance successful."
+      : "In attendance successful.",
+    type === "OUT"
+      ? "आपकी आउट अटेंडेंस सफल हुई।"
+      : "आपकी इन अटेंडेंस सफल हुई।"
+  );
 }
+
 
 
   </script>

@@ -166,6 +166,7 @@ detectFrame();
 }
 
 function testAttendance(type) {
+  alert("Face Ready Status: " + singleFaceReady);
   if (typeof singleFaceReady === "undefined" ||
       !singleFaceReady) {
     alert("Please show exactly one face to the camera.");

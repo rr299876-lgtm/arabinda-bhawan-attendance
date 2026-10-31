@@ -114,13 +114,18 @@ const faceCount = results.detections
   ? results.detections.length
   : 0;
 
+
 if (faceCount === 1) {
+  singleFaceReady = true;
   status.textContent = "One Face Detected - Ready";
 } else if (faceCount > 1) {
+  singleFaceReady = false;
   status.textContent = "Multiple Faces Detected - Wait";
 } else {
+  singleFaceReady = false;
   status.textContent = "No Face Detected";
 }
+
 
     });
 

@@ -235,6 +235,17 @@ function testAttendance(type) {
 
   lastAttendanceType = type;
 
+const messageBox = document.getElementById("attendanceMessage");
+
+if (messageBox) {
+  messageBox.style.backgroundColor = "#d4edda";
+  messageBox.style.color = "#155724";
+
+  messageBox.innerHTML = type === "OUT"
+    ? "OUT ATTENDANCE SUCCESSFUL<div>आपकी आउट अटेंडेंस सफल हुई।</div>"
+    : "IN ATTENDANCE SUCCESSFUL<div>आपकी इन अटेंडेंस सफल हुई।</div>";
+}
+
   alert(type + " Attendance Test Successful");
 
   speakMessage(

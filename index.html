@@ -165,16 +165,26 @@ detectFrame();
   }
 }
 
+
+let lastAttendanceType = "IN";
+
 function testAttendance(type) {
-  alert("Face Ready Status: " + singleFaceReady);
-  if (typeof singleFaceReady === "undefined" ||
-      !singleFaceReady) {
+  if (!singleFaceReady) {
     alert("Please show exactly one face to the camera.");
     return;
   }
 
+  if (type === lastAttendanceType) {
+    alert("Invalid Sequence! Please select " +
+      (lastAttendanceType === "IN" ? "OUT" : "IN"));
+    return;
+  }
+
+  lastAttendanceType = type;
+
   alert(type + " Attendance Test Successful");
 }
+
 
   </script>
 </body>

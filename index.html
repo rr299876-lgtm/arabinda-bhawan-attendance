@@ -107,11 +107,19 @@ async function startFaceDetection() {
     });
 
     faceDetector.onResults((results) => {
-      if (results.detections && results.detections.length > 0) {
-        status.textContent = "Face Detected Successfully";
-      } else {
-        status.textContent = "No Face Detected";
-      }
+    
+const faceCount = results.detections
+  ? results.detections.length
+  : 0;
+
+if (faceCount === 1) {
+  status.textContent = "One Face Detected - Ready";
+} else if (faceCount > 1) {
+  status.textContent = "Multiple Faces Detected - Wait";
+} else {
+  status.textContent = "No Face Detected";
+}
+
     });
 
     status.textContent = "Face Detector Initialized";

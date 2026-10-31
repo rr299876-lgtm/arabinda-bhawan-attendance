@@ -168,6 +168,28 @@ detectFrame();
 
 let lastAttendanceType = "IN";
 
+function speakMessage(englishText, hindiText) {
+  if (!("speechSynthesis" in window)) {
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const englishVoice = new SpeechSynthesisUtterance(englishText);
+  englishVoice.lang = "en-IN";
+  englishVoice.rate = 0.9;
+
+  const hindiVoice = new SpeechSynthesisUtterance(hindiText);
+  hindiVoice.lang = "hi-IN";
+  hindiVoice.rate = 0.9;
+
+  englishVoice.onend = function() {
+    window.speechSynthesis.speak(hindiVoice);
+  };
+
+  window.speechSynthesis.speak(englishVoice);
+}
+
 function testAttendance(type) {
   if (!singleFaceReady) {
     alert("Please show exactly one face to the camera.");

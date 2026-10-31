@@ -84,6 +84,41 @@ async function detectFaceSupport() {
   }
 }
 
+let faceDetector = null;
+
+async function startFaceDetection() {
+  const status = document.getElementById("status");
+
+  if (typeof FaceDetection === "undefined") {
+    status.textContent = "Face Detection Library Not Loaded";
+    return;
+  }
+
+  try {
+    faceDetector = new FaceDetection({
+      locateFile: (file) =>
+        "https://cdn.jsdelivr.net/npm/@mediapipe/face_detection/" + file
+    });
+
+    faceDetector.setOptions({
+      model: "short",
+      minDetectionConfidence: 0.6
+    });
+
+    faceDetector.onResults((results) => {
+      if (results.detections && results.detections.length > 0) {
+        status.textContent = "Face Detected Successfully";
+      } else {
+        status.textContent = "No Face Detected";
+      }
+    });
+
+    status.textContent = "Face Detector Initialized";
+  } catch (error) {
+    status.textContent = "Face Detector Error: " + error.message;
+  }
+}
+
   </script>
 </body>
 </html>

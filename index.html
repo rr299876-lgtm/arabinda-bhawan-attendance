@@ -164,6 +164,16 @@ detectFrame();
   }
 }
 
+function testAttendance(type) {
+  if (typeof singleFaceReady === "undefined" ||
+      !singleFaceReady) {
+    alert("Please show exactly one face to the camera.");
+    return;
+  }
+
+  alert(type + " Attendance Test Successful");
+}
+
   </script>
 </body>
 </html>

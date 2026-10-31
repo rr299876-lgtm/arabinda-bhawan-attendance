@@ -54,6 +54,7 @@
         video.srcObject = stream;
         await video.play();
         status.textContent = "Camera Connected Successfully";
+        checkFaceDetection();
       } catch (error) {
         status.textContent =
           "Camera Error: " + error.name + " - " + error.message;

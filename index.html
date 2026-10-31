@@ -54,6 +54,7 @@
         video.srcObject = stream;
         await video.play();
         status.textContent = "Camera Connected Successfully";
+        await detectFaceSupport();
         checkFaceDetection();
       } catch (error) {
         status.textContent =
@@ -67,6 +68,17 @@ function checkFaceDetection() {
   if (video && video.readyState >= 2) {
     document.getElementById("status").textContent =
       "Camera Ready - Face Detection Setup Pending";
+  }
+}
+
+async function detectFaceSupport() {
+  const status = document.getElementById("status");
+
+  if ("FaceDetector" in window) {
+    status.textContent = "Face Detection API Available";
+  } else {
+    status.textContent =
+      "Face Detection API Not Available - Library Required";
   }
 }
 

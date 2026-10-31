@@ -106,6 +106,8 @@ async function startFaceDetection() {
       minDetectionConfidence: 0.6
     });
 
+let singleFaceReady = false;
+
     faceDetector.onResults((results) => {
     
 const faceCount = results.detections

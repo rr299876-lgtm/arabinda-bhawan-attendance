@@ -212,7 +212,18 @@ function speakMessage(englishText, hindiText) {
 
 function testAttendance(type) {
   if (!singleFaceReady) {
-    alert("Please show exactly one face to the camera.");
+    
+const warningBox = document.getElementById("attendanceMessage");
+
+if (warningBox) {
+  warningBox.style.backgroundColor = "#f8d7da";
+  warningBox.style.color = "#721c24";
+
+  warningBox.innerHTML =
+    "PLEASE SHOW EXACTLY ONE FACE" +
+    "<div>कृपया कैमरे के सामने केवल एक चेहरा दिखाएँ।</div>";
+}
+
     speakMessage(
       "Please show your face to the camera.",
       "कृपया कैमरे के सामने अपना चेहरा दिखाएँ।"

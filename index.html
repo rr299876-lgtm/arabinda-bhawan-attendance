@@ -225,6 +225,14 @@ function speakMessage(englishText, hindiText) {
 
 
 function testAttendance(type) {
+  const studentId = document.getElementById("studentSelect").value;
+
+if (!studentId) {
+  alert("Please select a student first.");
+  return;
+}
+
+let lastAttendanceType = studentAttendance[studentId] || "IN";
   if (!singleFaceReady) {
     
 const warningBox = document.getElementById("attendanceMessage");

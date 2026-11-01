@@ -199,7 +199,7 @@ detectFrame();
 }
 
 
-let lastAttendanceType = "IN";
+const studentAttendance = {};
 
 function speakMessage(englishText, hindiText) {
   if (!("speechSynthesis" in window)) {

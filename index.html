@@ -266,7 +266,7 @@ if (warningBox) {
     return;
   }
 
-  lastAttendanceType = type;
+ studentAttendance[studentId] = type;
 
 const messageBox = document.getElementById("attendanceMessage");
 alert("Message Box Found: " + (messageBox !== null));
